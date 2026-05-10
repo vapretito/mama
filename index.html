@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Espejito de Mama</title>
+  <meta
+    name="description"
+    content="Una experiencia especial para el Dia de la Madre con espejito, espejito."
+  >
+  <meta name="theme-color" content="#1a1020">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="ambient ambient-left"></div>
+  <div class="ambient ambient-right"></div>
+  <div class="stars" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <section class="intro-panel glass-panel reveal-card">
+      <div class="intro-copy">
+        <p class="eyebrow">Dia de la Madre</p>
+        <h1>Un espejito misterioso que solo dice la verdad.</h1>
+        <p class="lead">
+          Haz la pregunta, espera la magia y deja que el espejo revele quien es la mama
+          mas bonita de todas.
+        </p>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-pill">Experiencia de celular</div>
+        <div class="feature-pill">Modo conversacion</div>
+        <div class="feature-pill">Lista para compartir</div>
+      </div>
+    </section>
+
+    <section class="experience-grid">
+      <section class="mirror-panel glass-panel reveal-card">
+        <div class="mirror-toolbar">
+          <div>
+            <p class="mini-label">Modo espejito</p>
+            <h2>Preguntale quien es la mas bonita</h2>
+          </div>
+          <div class="status-badge">Espejo en secreto</div>
+        </div>
+
+        <div class="photo-picker" aria-label="Elegir foto">
+          <button class="photo-chip active" data-photo="mama-sonrisa.jpeg" type="button">
+            Sonrisa radiante
+          </button>
+          <button class="photo-chip" data-photo="mama-glam.jpeg" type="button">
+            Glam poderosa
+          </button>
+        </div>
+
+        <div class="question-composer">
+          <label class="composer-label" for="questionInput">Tu pregunta para el espejito</label>
+          <div class="composer-row">
+            <input
+              id="questionInput"
+              type="text"
+              value="Espejito, espejito... quien es la mama mas bonita de todas?"
+              maxlength="120"
+            >
+            <button id="mirrorTrigger" class="primary-btn" type="button">Preguntar</button>
+          </div>
+        </div>
+
+        <div class="mirror-stage" id="mirrorStage">
+          <div class="mirror-ring ring-one"></div>
+          <div class="mirror-ring ring-two"></div>
+
+          <div class="mirror-frame">
+            <div class="mirror-crown">Incognito</div>
+            <div class="mirror-surface">
+              <img
+                id="mirrorPhoto"
+                class="mirror-photo"
+                src="./mama-sonrisa.jpeg"
+                alt="Foto de mama"
+              >
+              <div class="mirror-veil"></div>
+              <div class="mirror-shine"></div>
+
+              <div class="mirror-overlay">
+                <div class="question-bubble">
+                  <span class="bubble-kicker">Tu pregunta</span>
+                  <p id="mirrorQuestionText">Espejito, espejito... quien es la mama mas bonita de todas?</p>
+                </div>
+
+                <div class="incognito-state" id="incognitoState">
+                  <div class="incognito-icon">?</div>
+                  <p>El espejo guarda silencio hasta que hagas la pregunta.</p>
+                </div>
+
+                <div class="answer-panel" id="answerPanel">
+                  <p class="answer-kicker">Respuesta del espejo</p>
+                  <h3 id="answerText">La mas bonita eres tu.</h3>
+                  <p class="answer-subline">Y el espejo no miente.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tap-hint" id="tapHint">Escribe la pregunta y toca “Preguntar”</div>
+        </div>
+
+        <div class="action-row">
+          <button id="resetMirror" class="ghost-btn" type="button">Volver a ocultar</button>
+        </div>
+      </section>
+
+      <section class="share-panel glass-panel reveal-card">
+        <div class="mirror-toolbar">
+          <div>
+            <p class="mini-label">Modo historia</p>
+            <h2>Conversacion con Espejito</h2>
+          </div>
+          <div class="status-badge accent">Formato WhatsApp</div>
+        </div>
+
+        <article id="storyCard" class="chat-card" aria-label="Vista previa de conversacion">
+          <div class="chat-topbar">
+            <div class="chat-avatar">E</div>
+            <div class="chat-topcopy">
+              <strong>Espejito</strong>
+              <span>en linea</span>
+            </div>
+          </div>
+
+          <div class="chat-thread">
+            <div class="message message-user">
+              <p id="chatQuestionText">Espejito, espejito... quien es la mama mas bonita de todas?</p>
+              <span>10:44</span>
+            </div>
+
+            <div class="message message-mirror typing-message">
+              <p>Permiteme mirar bien...</p>
+              <span>10:44</span>
+            </div>
+
+            <div class="message message-photo">
+              <div class="message-photo-wrap">
+                <img id="storyPhoto" src="./mama-sonrisa.jpeg" alt="Retrato de mama para historia">
+              </div>
+              <p id="chatAnswerText">Obvio que eres tu.</p>
+              <span>10:45</span>
+            </div>
+
+            <div class="message message-mirror final">
+              <p id="chatFinalText">La mama mas bonita de todas eres tu.</p>
+              <span>10:45</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="story-actions">
+          <button id="shareStory" class="primary-btn" type="button">Compartir ahora</button>
+          <button id="downloadStory" class="ghost-btn" type="button">Descargar historia</button>
+        </div>
+
+        <p id="shareHint" class="share-hint">
+          La imagen se genera como una conversacion para que ella la suba como historia o la envie por WhatsApp.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <canvas id="storyCanvas" width="1080" height="1920" hidden></canvas>
+
+  <script src="./script.js"></script>
+</body>
+</html>
